@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import { Routes } from "react-router-dom";
+import DemoTable from "./components/TableView/DemoTable";
+import Navbar from "./components/SideNavbar/Navbar";
+import CreateTicket from "./components/CreateTicket/CreateTicket";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Profile from "./components/Profile/Profile";
+import Admin from "./components/Admin/Admin";
+import AdminTableView from "./components/TableView/AdminTableView";
+import UserTable from "./components/TableView/UserTable";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/createticket" element={<CreateTicket />} />
+          <Route path="/demotable" element={<DemoTable />} />
+          <Route path="/navbar" element={<Navbar />}></Route>
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/admintable' element={<AdminTableView />} />
+          <Route path="/userlist"  element={<UserTable />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
